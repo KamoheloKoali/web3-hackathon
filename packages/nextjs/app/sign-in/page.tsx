@@ -1,0 +1,155 @@
+"use client";
+
+import { ChangeEvent, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+interface Inputs {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+interface Errors {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+}
+
+const Page: React.FC = () => {
+  const router = useRouter();
+  const [inputs, setInputs] = useState<Inputs>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState<Errors>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputs(prevInputs => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+  };
+
+  const validateInputs = (): Errors => {
+    const validationErrors: Errors = {};
+    if (!inputs.firstName) {
+      validationErrors.firstName = "First name is required";
+    }
+    if (!inputs.lastName) {
+      validationErrors.lastName = "Last name is required";
+    }
+    if (!inputs.email) {
+      validationErrors.email = "Email is required";
+    }
+    if (!inputs.password) {
+      validationErrors.password = "Password is required";
+    }
+    return validationErrors;
+  };
+
+  const submit = () => {
+    const validationErrors = validateInputs();
+    if (Object.keys(validationErrors).length === 0) {
+      setIsSubmitted(true);
+      router.push("/school");
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-2 justify-center items-center h-screen">
+      {isSubmitted ? (
+        <div role="alert" className="alert alert-success w-96">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>Your profile has been created!</span>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2 justify-center items-center">
+          <div className="card card-compact bg-base-100 w-96 shadow-xl">
+            <div className="p-5 gap-2 flex flex-col">
+              <label className="input input-bordered flex rounded-lg items-center gap-2">
+                <input
+                  type="text"
+                  name="firstName"
+                  value={inputs.firstName}
+                  onChange={handleInputChange}
+                  className="grow"
+                  placeholder="First Name"
+                  required
+                />
+                {errors.firstName && <span className="text-red-500">{errors.firstName}</span>}
+              </label>
+              <label className="input input-bordered flex rounded-lg items-center gap-2">
+                <input
+                  type="text"
+                  name="lastName"
+                  value={inputs.lastName}
+                  onChange={handleInputChange}
+                  className="grow"
+                  placeholder="Last Name"
+                  required
+                />
+                {errors.lastName && <span className="text-red-500">{errors.lastName}</span>}
+              </label>
+              <label className="input input-bordered rounded-lg flex items-center gap-2">
+                <input
+                  type="email"
+                  name="email"
+                  value={inputs.email}
+                  onChange={handleInputChange}
+                  className="grow"
+                  placeholder="Email"
+                  required
+                />
+                {errors.email && <span className="text-red-500">{errors.email}</span>}
+              </label>
+              <label className="input input-bordered rounded-lg flex items-center gap-2">
+                <input
+                  type="password"
+                  name="password"
+                  value={inputs.password}
+                  onChange={handleInputChange}
+                  className="grow"
+                  placeholder="Password"
+                  required
+                />
+                {errors.password && <span className="text-red-500">{errors.password}</span>}
+              </label>
+              <button className="btn btn-active btn-neutral rounded-lg" onClick={submit}>
+                Submit
+              </button>
+            </div>
+          </div>
+          <div>
+            Already have an account?{" "}
+            <Link className="link link-info" href={"/sign-in"}>
+              Sign In
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Page;
