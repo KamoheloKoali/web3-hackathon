@@ -11,7 +11,7 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   // const { address: connectedAddress } = useAccount();
 
-  return redirect("/sign-in");
+  return redirect("/settings");
 };
 
 export default Home;
