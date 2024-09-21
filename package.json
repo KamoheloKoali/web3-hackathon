@@ -35,8 +35,16 @@
     "verify": "yarn workspace @se-2/hardhat verify"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@types/chai": "^4.3.19",
+    "@types/mocha": "^10.0.8",
+    "chai": "^5.1.1",
+    "ethers": "^6.13.2",
+    "hardhat": "^2.22.11",
     "husky": "~8.0.3",
-    "lint-staged": "~13.2.2"
+    "lint-staged": "~13.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
   },
   "packageManager": "yarn@3.2.3",
   "engines": {

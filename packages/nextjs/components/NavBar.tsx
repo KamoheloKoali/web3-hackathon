@@ -21,8 +21,8 @@ const NavBar = () => {
 
   return (
     <div className="flex flex-col gap-4 items-center pt-6 m-8 gap-4 flex-shrink-0 rounded-lg w-[15%]">
-      <label className="input input-bordered rounded-lg flex items-center gap-2">
-        <input type="text" className="grow" placeholder="Search" />
+      <label className="input input-bordered rounded-lg flex items-center gap-2 bg-base-100 text-base-content">
+        <input type="text" className="grow bg-base-100 text-base-content" placeholder="Search Courses" />
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 opacity-70">
           <path
             fillRule="evenodd"
@@ -34,10 +34,17 @@ const NavBar = () => {
       <div className="flex">
         <RainbowKitCustomConnectButton />
       </div>
+      <Link href={"/school"} className="font-semibold text-base">
+        #Home
+      </Link>
+      <Link href={"/mycourses"} className="font-semibold text-base">
+        #My Courses
+      </Link>
+      {/* <hr /> */}
       <Link href={"/courses"} className="font-semibold text-base">
         #Courses
       </Link>
-      <Link href={"#"} className="font-semibold text-base">
+      <Link href={"/settings"} className="font-semibold text-base">
         #Settings
       </Link>
       {/* <hr /> */}

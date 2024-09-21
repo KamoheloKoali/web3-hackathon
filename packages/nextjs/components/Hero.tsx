@@ -52,8 +52,8 @@ const Hero: React.FC = () => {
 
       <input
         type="text"
-        className="mt-6 p-3 w-full max-w-md rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
-        placeholder="Ask Satoru Gojo - infinite"
+        className="mt-6 p-3 w-full max-w-md rounded-lg border border-gray-300 bg-base-100 text-base-content shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+        placeholder="Ask Satoru Gojo ✨"
       />
     </div>
   );
