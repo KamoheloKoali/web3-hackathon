@@ -39,12 +39,6 @@ const Page: React.FC = () => {
 
   const validateInputs = (): Errors => {
     const validationErrors: Errors = {};
-    if (!inputs.firstName) {
-      validationErrors.firstName = "First name is required";
-    }
-    if (!inputs.lastName) {
-      validationErrors.lastName = "Last name is required";
-    }
     if (!inputs.email) {
       validationErrors.email = "Email is required";
     }
@@ -81,7 +75,7 @@ const Page: React.FC = () => {
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>Your profile has been created!</span>
+          <span>Sign In successful!</span>
         </div>
       ) : (
         <div className="flex flex-col gap-2 justify-center items-center">

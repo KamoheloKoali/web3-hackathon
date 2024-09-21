@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
+// import { useEffect, useState } from "react";
+import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
+// import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import { WagmiProvider } from "wagmi";
 // import { Footer } from "~~/components/Footer";
@@ -35,25 +36,25 @@ export const queryClient = new QueryClient({
 });
 
 export const ScaffoldEthAppWithProviders = ({ children }: { children: React.ReactNode }) => {
-  const { resolvedTheme } = useTheme();
-  const isDarkMode = resolvedTheme === "dark";
-  const [mounted, setMounted] = useState(false);
+  // const { resolvedTheme } = useTheme();
+  // const isDarkMode = resolvedTheme === "dark";
+  // const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <ProgressBar />
-        <RainbowKitProvider
-          avatar={BlockieAvatar}
-          theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
-        >
+        <RainbowKitProvider avatar={BlockieAvatar} theme={lightTheme()}>
+          {/* <Header /> */}
           <ScaffoldEthApp>{children}</ScaffoldEthApp>
+          {/* <Footer /> */}
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
 };
+// theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
