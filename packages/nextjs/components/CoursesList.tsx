@@ -153,7 +153,9 @@ const CoursesList = () => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center gap-4 p-4">
+      {" "}
+      {/* Added gap and padding */}
       {courses.map((course, index) => (
         <Card
           key={index}

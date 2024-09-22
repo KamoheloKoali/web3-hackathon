@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Alert from "./Alert";
+
+// import useScaffoldWriteContract from "~~/hooks/scaffold-eth"
 
 interface CardProps {
   institution: string;
@@ -12,22 +14,27 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ institution, title, description, price }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const [isClickedPay, setIsClickedPay] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  // const { writeContractAsync: wruteYourContractAsync } = useScaffoldWriteContract("UserProfile")
 
-  const handleClickPay = () => {
-    setIsClickedPay(true);
-    setIsClicked(true); // Set isClicked to true when paying
-    router.push("/debug");
-  };
+  // const handleClickPay = () => {
+  //   setIsClickedPay(true);
+  //   setIsClicked(true); // Set isClicked to true when paying
+  //   router.push("/debug");
+  // };
 
   const handleClickFree = () => {
     setIsClicked(true); // Set isClicked to true when getting a free course
+    setIsClickedPay(false);
   };
+  console.log(price);
 
   return (
-    <div className="m-5 card card-compact bg-base-100 w-96 shadow-xl">
+    <div className="card card-compact bg-base-100 w-full md:w-96 shadow-xl mx-auto">
+      {" "}
+      {/* Responsive width */}
       <div className="card-body">
         <h2 className="card-title">
           {title} - {institution}
@@ -42,12 +49,8 @@ const Card: React.FC<CardProps> = ({ institution, title, description, price }) =
             )
           ) : (
             <>
-              <p className="font-bold text-base">{price === 0 || price === null ? "Free" : `Price: M${price}`}</p>
-              <button
-                className="btn btn-primary"
-                onClick={price === 0 || price === null ? handleClickFree : handleClickPay}
-              >
-                {price === 0 || price === null ? "Get Course" : "Buy Course"}
+              <button className="btn btn-primary w-full rounded-xl" onClick={handleClickFree}>
+                Enroll
               </button>
             </>
           )}

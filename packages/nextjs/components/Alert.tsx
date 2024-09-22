@@ -18,11 +18,10 @@ const Alert = () => {
         />
       </svg>
       <span>
-        Your purchase has been confirmed! visit{" "}
+        Enrolled. Congrats! ✨{" "}
         <Link href={"/your-courses"} className="link link-info">
-          here
+          view course
         </Link>{" "}
-        to view it
       </span>
     </div>
   );

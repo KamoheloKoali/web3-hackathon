@@ -17,6 +17,7 @@ const Card: React.FC<CardProps> = ({ institution, title, description, price }) =
     setIsClicked(true);
     // Add your navigation or logic here
     console.log("Navigating to the course");
+    console.log(price);
   };
 
   return (
@@ -31,9 +32,8 @@ const Card: React.FC<CardProps> = ({ institution, title, description, price }) =
             <NoCourse />
           ) : (
             <>
-              <p className="font-bold text-base">Price Paid:{price === 0 || price === null ? " Free" : ` M${price}`}</p>
               <button
-                className="btn btn-primary"
+                className="btn btn-primary w-full rounded-xl"
                 onClick={handleClick} // Always bind to the handleClick function
               >
                 Go to Course
